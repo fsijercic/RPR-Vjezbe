@@ -5,6 +5,10 @@ public class Imenik {
 
     private Map<String,TelefonskiBroj> brojevi;
 
+    public Imenik(){
+        this.brojevi=new HashMap<String,TelefonskiBroj>();
+    }
+
     public Imenik(Map<String, TelefonskiBroj> brojevi) {
         this.brojevi = brojevi;
     }
@@ -80,8 +84,18 @@ public class Imenik {
         return spisak;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder imenik= new StringBuilder();
+        int br=1;
 
+        for(Map.Entry<String,TelefonskiBroj> xy:this.brojevi.entrySet())
+                imenik.append(br++)
+                        .append(". ")
+                        .append(xy.getKey()).append(" - ")
+                        .append(xy.getValue().ispisi())
+                        .append(System.lineSeparator());
 
-
-
+        return imenik.toString();
+    }
 }
